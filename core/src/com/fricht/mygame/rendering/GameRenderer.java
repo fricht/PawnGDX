@@ -158,7 +158,9 @@ public class GameRenderer {
                             board.can_play_at(sq_x + 2, sq_y, enemy_num) ||
                             board.can_play_at(sq_x - 2, sq_y, enemy_num) ||
                             board.can_play_at(sq_x, sq_y + 2, enemy_num) ||
-                            board.can_play_at(sq_x, sq_y - 2, enemy_num)
+                            board.can_play_at(sq_x, sq_y - 2, enemy_num) ||
+                            // still on the board
+                            board.is_out_of_bound(sq_x, sq_y)
                         )
                     ) {
                         board.add(sq_x, sq_y, 3, get_player_num());
@@ -264,6 +266,5 @@ public class GameRenderer {
             anim.render(batch, animation_progress);
         }
     }
-
 
 }

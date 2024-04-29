@@ -34,13 +34,17 @@ public class Board {
         board[y][x] = value;
     }
 
+    public boolean is_out_of_bound(int x, int y) {
+        return x < 0 || y < 0 || x >= size || y >= size;
+    }
+
     public void clear_set_at(int x, int y, int value, int player) {
         int[][] cell = {{value, player}, {0, 0}, {0, 0}};  // reset 'stack'
         board[y][x] = cell;
     }
 
     public void add(int x, int y, int amount, int player) {
-        if (x < 0 || y < 0 || x >= size || y >= size) {  // skip if out of bound
+        if (is_out_of_bound(x, y)) {  // skip if out of bound
             return;
         }
         if (board[y][x][2][1] != 0) {
@@ -69,7 +73,7 @@ public class Board {
     }
 
     public boolean can_play_at(int x, int y, int player) {
-        if (x < 0 || y < 0 || x >= size || y >= size) {  // skip if out of bound
+        if (is_out_of_bound(x, y)) {  // skip if out of bound
             return false;
         }
         return get_at(x, y)[0][1] == player;
