@@ -5,12 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.fricht.mygame.MyGame;
 import com.fricht.mygame.rendering.animations.Animation;
 import com.fricht.mygame.rendering.animations.ChangePawn;
 import com.fricht.mygame.rendering.animations.SetPawn;
 import com.fricht.mygame.rendering.animations.Slide;
-import com.fricht.mygame.screens.MainMenu;
 
 import java.util.ArrayList;
 
@@ -22,7 +20,7 @@ public class GameRenderer {
     private static final int[] players_num = {Board.P1, Board.P2};
     private static final float[][] players_bg = {{0f, 0f, 0.2f}, {0.4f, 0f, 0f}};
     private int current_player;
-    private boolean[] has_played;  // for the first move
+    private final boolean[] has_played;  // for the first move
 
     private final Sprite tile_sprite;
     private final Sprite[] blue_sprite;
@@ -57,9 +55,6 @@ public class GameRenderer {
         board = new Board(board_size);
         new_board = new Board(board_size);
         regen_squares_pos();
-        // obsolete, now the players can chose their start position
-        // board.add(board_size / 2 - 1, board_size / 2 + 1, 3, Board.P1);
-        // board.add(board_size / 2 + 1, board_size / 2 - 1, 3, Board.P2);
         check_animations();
     }
 

@@ -7,7 +7,7 @@ public class Board {
     public static final int P2 = -1;
 
     public final int size;
-    private int[][][][] board;
+    private final int[][][][] board;
 
     public Board(int size) {
         this.size = size;
@@ -57,8 +57,7 @@ public class Board {
 
     public int[][] get_merged_at(int x, int y) {
         int[][] cell = get_at(x, y);
-        int[][] new_cell = {{cell[0][0] + cell[1][0] + cell[2][0], cell[2][1]}, {0, 0}, {0, 0}};
-        return new_cell;
+        return new int[][]{{cell[0][0] + cell[1][0] + cell[2][0], cell[2][1]}, {0, 0}, {0, 0}};
     }
 
     public int[][] get_split_at(int x, int y) {
